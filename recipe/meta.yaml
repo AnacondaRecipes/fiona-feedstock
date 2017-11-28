@@ -19,6 +19,8 @@ build:
     - fio=fiona.fio.main:main_group
 
 requirements:
+  build:
+    - {{ compiler('c') }}
   host:
     - python
     - cython
