@@ -8,7 +8,7 @@ package:
 source:
   git_url: https://github.com/Toblerity/Fiona
   git_rev: {{ git_ref }}
-  git_depth: 10
+  git_depth: 100
   patches:
     - fix_null_gdal_22.patch
 
@@ -21,6 +21,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - python
     - cython
@@ -37,6 +38,7 @@ requirements:
     - six
     - enum34  # [py27]
     - shapely
+    - gdal  {{ libgdal }}
 
 test:
   source_files:
