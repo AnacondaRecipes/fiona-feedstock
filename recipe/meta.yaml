@@ -11,6 +11,9 @@ source:
 build:
   number: 0
   skip: True  # [win and vc<14]
+  # There is no libgdal for ppc or win32
+  skip: True  # [win32] 
+  skip: True  # [linux and (ppc64le | aarch64)]
   entry_points:
     - fio = fiona.fio.main:main_group
 
