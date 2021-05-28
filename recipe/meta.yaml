@@ -51,6 +51,7 @@ test:
     - pytest >=3
     - boto3 >=1.2.4
     - packaging
+    - pytz
     #- pytest-catchlog
     - mock  # [py2k]
   files:
