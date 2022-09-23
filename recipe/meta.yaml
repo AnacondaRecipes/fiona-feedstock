@@ -1,45 +1,52 @@
-{% set version = "1.8.13.post1" %}
+{% set version = "1.8.21" %}
 
 package:
   name: fiona
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: 1a432bf9fd56f089256c010da009c90d4a795c531a848132c965052185336600
+  url: https://github.com/Toblerity/Fiona/archive/refs/tags/{{ version }}.zip
+  sha256: 9e66bff9e69c3270fbd8228e5ad0182be893c57167e406da13fa928b924622c7
 
 build:
-  number: 0
-  skip: True  # [win and vc<14]
-  # There is no libgdal for ppc or win32
-  skip: True  # [win32] 
-  skip: True  # [linux and ppc64le]
+  number: 2
+  skip: true  # [win and vc<14]
+  script_env:
+    - GDAL_ENABLE_DEPRECATED_DRIVER_GTM=YES
   entry_points:
     - fio = fiona.fio.main:main_group
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
     - python
     - pip
+    - certifi  # [py<=37]
     - cython >=0.28.3
     - numpy
     - libgdal
   run:
     - python
+    - certifi  # [py<=37]
     - setuptools
     - gdal
     - {{ pin_compatible('numpy') }}
     - attrs >=17
-    - click >=4.0,<8
+    - click >=4.0
     - cligj >=0.5
     - click-plugins >=1.0
     - six >=1.7
     - munch
-    - shapely
+    - argparse  # [py<27]
+    - ordereddict  # [py<27]
     - enum34  # [py<34]
+    - shapely  # only option calc we include by default
 
 test:
   source_files:
@@ -53,6 +60,7 @@ test:
     - packaging
     #- pytest-catchlog
     - mock  # [py2k]
+    - pytz
   files:
     - test_data
   commands:
@@ -64,9 +72,10 @@ about:
   home: http://github.com/Toblerity/Fiona
   license: BSD-3-Clause
   license_file: LICENSE.txt
-  summary: 'Fiona reads and writes spatial data files'
+  summary: Fiona reads and writes spatial data files
 
 extra:
   recipe-maintainers:
+    - akrherz
     - ocefpaf
     - jorisvandenbossche
