@@ -27,6 +27,7 @@ requirements:
     - cython >=0.29.29
     - numpy
     - libgdal
+    - wheel
   run:
     - python
     - setuptools
