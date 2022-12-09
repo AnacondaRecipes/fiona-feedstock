@@ -61,7 +61,7 @@ about:
   home: http://github.com/Toblerity/Fiona
   license: BSD-3-Clause
   license_file: LICENSE.txt
-  summary: 'Fiona reads and writes spatial data files'
+  summary: Fiona reads and writes spatial data files
 
 extra:
   recipe-maintainers:
