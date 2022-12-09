@@ -12,8 +12,8 @@ build:
   number: 0
   skip: True  # [win and vc<14]
   skip: True  # [py<36]
-  # There is no libgdal for ppc
-  skip: True  # [linux and ppc64le]
+  # There is no libgdal for s390x
+  skip: True  # [linux and s390x]
   entry_points:
     - fio = fiona.fio.main:main_group
 
