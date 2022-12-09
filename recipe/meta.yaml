@@ -21,7 +21,7 @@ requirements:
   host:
     - python
     - pip
-    - cython >=0.28.3
+    - cython >=0.29.29
     - numpy
     - libgdal
   run:
