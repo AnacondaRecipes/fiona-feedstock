@@ -63,10 +63,12 @@ test:
     - fio info test_data/test.shp
 
 about:
-  home: http://github.com/Toblerity/Fiona
+  home: https://github.com/Toblerity/Fiona
   license: BSD-3-Clause
   license_file: LICENSE.txt
+  license_family: BSD
   summary: Fiona reads and writes spatial data files
+  doc_url: https://fiona.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
