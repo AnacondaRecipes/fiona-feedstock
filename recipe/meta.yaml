@@ -48,6 +48,7 @@ test:
     - boto3 >=1.2.4
     - packaging
     #- pytest-catchlog
+    - pytz
   files:
     - test_data
   commands:
