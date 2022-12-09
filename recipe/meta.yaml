@@ -53,9 +53,11 @@ test:
     - packaging
     #- pytest-catchlog
     - pytz
+    - pip
   files:
     - test_data
   commands:
+    - pip check
     - fio --help
     - fio ls test_data/test.shp
     - fio info test_data/test.shp
