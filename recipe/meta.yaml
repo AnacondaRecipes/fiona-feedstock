@@ -32,6 +32,7 @@ requirements:
     - certifi  # [py<=37]
   run:
     - python
+    - setuptools
     - gdal
     - {{ pin_compatible('numpy') }}
     - attrs >=17
