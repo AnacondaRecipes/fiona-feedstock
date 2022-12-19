@@ -28,18 +28,21 @@ requirements:
     - numpy
     - libgdal
     - wheel
+    - setuptools
+    - certifi  # [py<=37]
   run:
     - python
-    - setuptools
     - gdal
     - {{ pin_compatible('numpy') }}
     - attrs >=17
-    - click >=4.0,<8
+    - click >=4.0
     - cligj >=0.5
     - click-plugins >=1.0
     - six >=1.7
     - munch
-    - shapely
+    - shapely  # only option calc we include by default
+    - certifi  # [py<=37]
+
 
 test:
   source_files:
