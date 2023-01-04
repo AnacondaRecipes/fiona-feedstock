@@ -5,7 +5,6 @@ Subject: [PATCH] Port patch from Toblerity/Fiona#1122
 
 ---
  fiona/drvsupport.py      | 27 +++++++++++++++++----------
- pytest.ini               |  3 ++-
  tests/conftest.py        | 18 ++++++++++++++++++
  tests/test_datetime.py   |  6 ++++++
  tests/test_drvsupport.py | 13 +++++++++++++
@@ -91,19 +90,6 @@ index fd44f76..1320248 100644
  }
  
  
-diff --git a/pytest.ini b/pytest.ini
-index b561de3..50a3313 100644
---- a/pytest.ini
-+++ b/pytest.ini
-@@ -8,6 +8,7 @@ filterwarnings =
- markers = 
-     iconv: marks tests that require gdal to be compiled with iconv
-     network: marks tests that require a network connection
--    wheel: marks test that only works when installed from wheel
-+    wheel: marks tests that only works when installed from wheel
-+    gdal: marks tests that are only dependent on GDAL functionality (e.g. for drvsupport)
- 
- testpaths = tests
 diff --git a/tests/conftest.py b/tests/conftest.py
 index 05219ff..3da4b89 100644
 --- a/tests/conftest.py
