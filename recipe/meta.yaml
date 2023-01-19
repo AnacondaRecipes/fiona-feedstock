@@ -30,7 +30,7 @@ requirements:
     - pip
     - cython >=0.29.29
     - numpy
-    - libgdal
+    - libgdal 3.0.2
     - wheel
     - setuptools
     - certifi  # [py<=37]
