@@ -7,7 +7,7 @@ package:
 source:
   url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
   sha256: a82a99ce9b3e7825740157c45c9fb2259d4e92f0a886aaac25f0db40ffe1eea3
-  patches:
+  patches:  # [win]
     # Both patches should be unnecessary for fiona v1.9
     - 0001-Port-patch-from-Toblerity-Fiona-1122.patch  # [win]
     - 0002-add-OpenFileGDB-extension.patch  # [win]
