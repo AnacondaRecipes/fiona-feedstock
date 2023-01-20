@@ -8,7 +8,10 @@ pushd /tmp
 
 $PYTHON -m pytest -s -rxs -v -k "not (test_fio_ls_single_layer or test_directory or test_directory_trailing_slash or test_options or test_transaction or test_encoding_option_warning)"  -m "not wheel" tests
 popd
-
+$PYTHON -m pip check
+fio --help
+fio ls test_data/test.shp
+fio info test_data/test.shp
 # I believe it is safe to ignore the failures in tests/test_listing.py
 #     def test_directory_trailing_slash(data_dir):
 # >       assert fiona.listlayers(data_dir) == ['coutwildrnp', 'gre']
