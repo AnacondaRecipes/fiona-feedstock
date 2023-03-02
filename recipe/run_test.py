@@ -1,5 +1,6 @@
 import os
 import fiona
+import fiona.fio
 
 fname = os.path.join(os.environ['RECIPE_DIR'], 'test_data', 'test.shp')
 

@@ -1,66 +1,52 @@
-{% set version = "1.8.22" %}
+{% set name = "fiona" %}
+{% set version = "1.9.1" %}
 
 package:
-  name: fiona
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/F/Fiona/Fiona-{{ version }}.tar.gz
-  sha256: a82a99ce9b3e7825740157c45c9fb2259d4e92f0a886aaac25f0db40ffe1eea3
-  patches:  # [win]
-    # Both patches should be unnecessary for fiona v1.9
-    - 0001-Port-patch-from-Toblerity-Fiona-1122.patch  # [win]
-    - 0002-add-OpenFileGDB-extension.patch  # [win]
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/Fiona-{{ version }}.tar.gz
+  sha256: 3a3725e94840a387fef48726d60db6a6791563f366939d22378a4661f8941be7
 
 build:
   number: 0
-  skip: True  # [win and vc<14]
-  skip: True  # [py<36]
   # There is no libgdal for s390x
-  skip: True  # [linux and s390x]
+  skip: True  # [py<37 or s390x]
   entry_points:
     - fio = fiona.fio.main:main_group
 
 requirements:
   build:
-    - m2-patch  # [win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
     - python
     - pip
-    - cython 0.29.32
-    - numpy
-    - libgdal 3.0.2
+    - cython 0.29.33
+    - numpy {{ numpy }}
+    - libgdal 3.6.0
     - wheel
     - setuptools
-    - certifi  # [py<=37]
   run:
     - python
+    - attrs >=19.2.0
+    - certifi
+    - click >=8.0,<9.dev0
+    - click-plugins >=1.0
+    - cligj >=0.5
+    - munch >=2.3.2
     - setuptools
     - gdal
     - {{ pin_compatible('numpy') }}
-    - attrs >=17
-    - click >=4.0
-    - cligj >=0.5
-    - click-plugins >=1.0
-    - six >=1.7
-    - munch
     - shapely  # only option calc we include by default
-    - certifi  # [py<=37]
-
 
 test:
   source_files:
     - tests
-  imports:
-    - fiona
-    - fiona.fio
   requires:
-    - pytest >=3
-    - boto3 >=1.2.4
-    - packaging
-    #- pytest-catchlog
+    - pytest >=7
+    - boto3 >=1.3.1
     - pytz
     - pip
   files:

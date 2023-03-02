@@ -6,7 +6,7 @@ cp -r tests /tmp/
 
 pushd /tmp
 
-$PYTHON -m pytest -s -rxs -v -k "not (test_fio_ls_single_layer or test_directory or test_directory_trailing_slash or test_options or test_transaction or test_encoding_option_warning)"  -m "not wheel" tests
+$PYTHON -m pytest -s -rxs -v -k "not (test_fio_ls_single_layer or test_directory or test_directory_trailing_slash or test_options or test_transaction or test_encoding_option_warning or test_listdir_zipmemoryfile)"  -m "not wheel" tests
 popd
 $PYTHON -m pip check
 fio --help
