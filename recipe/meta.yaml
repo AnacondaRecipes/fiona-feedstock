@@ -25,7 +25,7 @@ requirements:
     - pip
     - cython 0.29.33
     - numpy {{ numpy }}
-    - libgdal 3.6.0
+    - libgdal 3.6.2
     - wheel
     - setuptools
   run:
