@@ -10,7 +10,7 @@ source:
   sha256: 3a3725e94840a387fef48726d60db6a6791563f366939d22378a4661f8941be7
 
 build:
-  number: 0
+  number: 1
   # There is no libgdal for s390x
   skip: True  # [py<37 or s390x]
   entry_points:
@@ -23,7 +23,7 @@ requirements:
   host:
     - python
     - pip
-    - cython 0.29.33
+    - cython 0.29
     - numpy {{ numpy }}
     - libgdal 3.6.2
     - wheel
