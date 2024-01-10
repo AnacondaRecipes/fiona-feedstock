@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 6bdc297..2061c15 100644
+--- a/setup.py
++++ b/setup.py
+@@ -9,6 +9,7 @@ import sys
+ from setuptools import setup
+ from setuptools.extension import Extension
+ 
++logging.getLogger().setLevel(logging.INFO)
+ 
+ # Ensure minimum version of Python is running
+ if sys.version_info[0:2] < (3, 6):
