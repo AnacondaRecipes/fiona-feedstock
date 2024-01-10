@@ -6,20 +6,9 @@ cp -r tests /tmp/
 
 pushd /tmp
 
-$PYTHON -m pytest -s -rxs -v -k "not (test_fio_ls_single_layer or test_directory or test_directory_trailing_slash or test_options or test_transaction or test_encoding_option_warning or test_listdir_zipmemoryfile)"  -m "not wheel" tests
+$PYTHON -m pytest -s -rxs -v -m "not network"  -m "not wheel" -k "not (test_listdir_zipmemoryfile)" tests
 popd
 $PYTHON -m pip check
 fio --help
 fio ls test_data/test.shp
 fio info test_data/test.shp
-# I believe it is safe to ignore the failures in tests/test_listing.py
-#     def test_directory_trailing_slash(data_dir):
-# >       assert fiona.listlayers(data_dir) == ['coutwildrnp', 'gre']
-# E       AssertionError: assert ['gre', 'coutwildrnp'] == ['coutwildrnp', 'gre']
-# E         At index 0 diff: u'gre' != 'coutwildrnp'
-# E         Full diff:
-# E         - [u'gre', u'coutwildrnp']
-# E         + ['coutwildrnp', 'gre']
-
-# Some wierd things happen with the gcc7 stack and pytest-catchlog
-# test_encoding_option_warning
