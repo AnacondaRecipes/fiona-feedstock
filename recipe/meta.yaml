@@ -23,8 +23,8 @@ build:
   skip: True  # [py<37 or s390x]
   entry_points:
     - fio = fiona.fio.main:main_group
-  script_env:                                                              # [unix]
-    - GDAL_VERSION={{ gdal_version }}                                      # [unix]
+  script_env:                                      
+    - GDAL_VERSION={{ gdal_version }}
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation # [unix]
 
 requirements:
