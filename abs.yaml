@@ -1,7 +1,6 @@
 aggregate_branch: 3.12
 channels:
   - https://staging.continuum.io/prefect/fs/shapely-feedstock/pr9/85b0d41
-  - https://staging.continuum.io/prefect/fs/geos-feedstock/pr11/a76656f
   - https://staging.continuum.io/prefect/fs/libspatialite-feedstock/pr12/379a78f
   - https://staging.continuum.io/prefect/fs/gdal-feedstock/pr29/759f81b
   - https://staging.continuum.io/prefect/fs/lerc-feedstock/pr3/b5361e3
