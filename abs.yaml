@@ -1,7 +1,2 @@
-aggregate_branch: 3.12
-channels:
-  - https://staging.continuum.io/prefect/fs/shapely-feedstock/pr9/85b0d41
-  - https://staging.continuum.io/prefect/fs/gdal-feedstock/pr29/759f81b
-  - https://staging.continuum.io/prefect/fs/lerc-feedstock/pr3/b5361e3
-  - https://staging.continuum.io/prefect/fs/libtiff-feedstock/pr20/af67ffc
-  - https://staging.continuum.io/prefect/fs/libdeflate-feedstock/pr6/915189e
+build_env_vars:
+  ANACONDA_ROCKET_ENABLE_PY313 : yes
