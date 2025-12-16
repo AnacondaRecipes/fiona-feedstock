@@ -1,13 +1,13 @@
 {% set name = "fiona" %}
 {% set version = "1.10.1" %}
-{% set gdal_version = "3.11.0" %}
+{% set gdal_version = "3.11.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
     sha256: b00ae357669460c6491caba29c2022ff0acfcbde86a95361ea8ff5cd14a86b68
     patches:
       - patches/0001-build-log-level.patch
@@ -16,25 +16,23 @@ source:
     folder: fiona/_vendor/munch/
 
 build:
-  number: 1
-  skip: True  # [py<38]
+  number: 2
+  skip: true  # [py<38]
   entry_points:
     - fio = fiona.fio.main:main_group
-  script_env:                                                              # [unix]
-    - GDAL_VERSION={{ gdal_version }}                                      # [unix]
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation # [unix]
+  script_env:  # [unix]
+    - GDAL_VERSION={{ gdal_version }}  # [unix]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [unix]
 
 requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - patch     # [unix]
-    - m2-patch  # [win]
   host:
     - python
     - pip
-    - cython >=3.0.2,<3.1
+    - cython >=3.0.2,<3.2
     - libgdal-core {{ gdal_version }}
     - wheel
     - setuptools >=67.8
@@ -46,7 +44,7 @@ requirements:
     - click-plugins >=1.0
     - cligj >=0.5
     - importlib-metadata  # [py<310]
-     # option calc
+    # option calc
     - shapely
     - pyparsing
     # vendored:
@@ -72,7 +70,7 @@ test:
 about:
   home: https://github.com/Toblerity/Fiona
   license: BSD-3-Clause AND MIT
-  license_file: 
+  license_file:
     - LICENSE.txt
     - fiona/_vendor/munch/LICENSE.txt
   license_family: BSD
