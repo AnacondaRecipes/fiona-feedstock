@@ -8,6 +8,9 @@ pushd /tmp
 
 skip_tests=()
 
+# fiona.errors.DriverError: Failed to open dataset (flags=68): /vsizip/vsis3/fiona-testing/coutwildrnp.zip
+skip_tests+=(--deselect=tests/test_collection.py::test_open_s3)
+
 # returned json with GDAL 3.13 has different whitespace formatting than previous version which fiona's tests
 # assert exactly against. tests can be restored once resolved: https://github.com/Toblerity/Fiona/issues/1512
 skip_tests+=(--deselect=tests/test_collection.py::test_open_kwargs)
