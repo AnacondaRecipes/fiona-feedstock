@@ -1,6 +1,6 @@
 {% set name = "fiona" %}
 {% set version = "1.10.1" %}
-{% set gdal_version = "3.11.4" %}
+{% set gdal_version = "3.13.0" %}
 
 package:
   name: {{ name|lower }}
@@ -16,7 +16,7 @@ source:
     folder: fiona/_vendor/munch/
 
 build:
-  number: 2
+  number: 3
   skip: true  # [py<38]
   entry_points:
     - fio = fiona.fio.main:main_group
